@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class GapBufferTests {
     @Test
     public void addingAbc() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('a');
       g.insert('b');
       g.insert('c');
@@ -17,7 +17,7 @@ public class GapBufferTests {
     }
     @Test
     public void deleteLetters() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('H');
       g.insert('e');
       g.insert('l');
@@ -36,7 +36,7 @@ public class GapBufferTests {
     
     @Test
     public void insertStartAndMiddle() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('H');
       g.insert('e');
       g.insert('l');
@@ -60,7 +60,7 @@ public class GapBufferTests {
     
     @Test
     public void edgeCases() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('a');
       g.insert('b');
       g.insert('c');
@@ -84,7 +84,7 @@ public class GapBufferTests {
     
     @Test
     public void veryLong() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('W');
       g.insert('e');
       g.insert('l');
@@ -145,7 +145,7 @@ public class GapBufferTests {
     
     @Test
     public void longInMiddle() {
-      GapBuffer g = new GapBuffer();
+      GapBuffer g = new GapBuffer("");
       g.insert('W');
       g.insert('e');
       g.insert('e');
@@ -170,7 +170,7 @@ public class GapBufferTests {
         @Property
     public boolean stopAtZero(
             @ForAll @IntRange(min = 1, max = 1000) int sz) {
-        GapBuffer g = new GapBuffer();
+        GapBuffer g = new GapBuffer("");
         for (int i = 0; i < sz; i++) {
             g.moveLeft();
         }
@@ -180,7 +180,7 @@ public class GapBufferTests {
     @Property
     public boolean stopAtLength(
             @ForAll @IntRange(min = 1, max = 1000) int sz) {
-       GapBuffer g = new GapBuffer();
+       GapBuffer g = new GapBuffer("");
         g.insert('a');
         g.insert('b');
         g.insert('c');

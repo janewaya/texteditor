@@ -16,10 +16,11 @@ public class GapBuffer {
     private static final int INITIAL_SIZE = 10;
     
     public GapBuffer(String start){
-        this.size = 0;
-        this.pos = 0;
+        this.size = start.length();
+        this.pos = start.length();
         this.startBuffer = start.length() + 1;
         this.gapBuffer = new char[start.length() + INITIAL_SIZE];
+        this.gapBuffer = Arrays.copyOf(start.toCharArray(), start.length() + INITIAL_SIZE);
         for(int i = start.length(); i < start.length() + INITIAL_SIZE; i++){
             this.gapBuffer[i] = ' ';
         }

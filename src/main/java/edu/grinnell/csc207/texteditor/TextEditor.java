@@ -68,13 +68,7 @@ public class TextEditor {
                 if(i % (col * 60 + 60) == 0 && i != 0){
                     col++;
                 }
-                if(!((i >= buf.startBuffer) && (i <= buf.endBuffer))){
-                    if(i >= buf.startBuffer){
-                        screen.setCharacter(i - (col * 60) - (buf.endBuffer - buf.startBuffer + 1), col, new TextCharacter(buf.gapBuffer[i]));
-                    } else{
-                        screen.setCharacter(i - (col * 60), col, new TextCharacter(buf.gapBuffer[i]));  
-                    }
-                }
+                screen.setCharacter(i - (col * 60), col, new TextCharacter(buf.gapBuffer[i]));  
             }
         }
         TerminalPosition pos = new TerminalPosition(buf.getCursorPosition() - (col * 60), col);
