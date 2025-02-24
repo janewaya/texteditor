@@ -96,7 +96,7 @@ public class GapBuffer {
 * Moves the cursor left.
 *
 */
-        public void moveLeft() {
+    public void moveLeft() {
         if (this.pos > 0) {
             int i = this.pos;
             if (this.size > this.pos) {
@@ -145,6 +145,7 @@ public class GapBuffer {
 /**
 * Returns an int at the current spot in the buffer.
 *
+* @param i the index that the character we wish to return is at.
 * @return char returns a character at a certain spot within the buffer.
 */
     public char getChar(int i) {
@@ -160,8 +161,6 @@ public class GapBuffer {
         char[] temp = Arrays.copyOf(this.gapBuffer, this.size);
         int j = 0;
         for (int i = this.endBuffer + 1; i < this.gapBuffer.length; i++) {
-            System.out.println(i);
-            System.out.println(this.startBuffer + j);
             temp[this.startBuffer + j] = this.gapBuffer[i];
             j++;
         }

@@ -46,7 +46,7 @@ public class SimpleStringBuffer {
         if (this.pos != 0 && this.pos == this.buffer.length()) {
             this.buffer = this.buffer.substring(0, this.buffer.length() - 1);
             this.pos--;
-        } else if(this.pos != 0 && this.buffer.length() != 0 && this.pos < this.buffer.length()) {
+        } else if (this.pos != 0 && this.buffer.length() != 0 && this.pos < this.buffer.length()) {
             String start = new String(this.buffer.substring(0, this.pos - 1));
             String end = new String(this.buffer.substring(this.pos, this.buffer.length()));
             this.buffer = start.concat(end);
