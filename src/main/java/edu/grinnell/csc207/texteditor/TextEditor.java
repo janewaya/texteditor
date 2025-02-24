@@ -22,7 +22,7 @@ public class TextEditor {
      */
     public static void main(String[] args) throws IOException {
         
-        if(args.length == 0){
+        if (args.length == 0) {
             throw new IndexOutOfBoundsException("Please try again with a file in mind.");
             
         }
@@ -37,21 +37,21 @@ public class TextEditor {
         KeyStroke stroke = screen.readInput();
         GapBuffer buf;
         
-        if(Files.isRegularFile(path) && Files.exists(path)){
+        if (Files.isRegularFile(path) && Files.exists(path)) {
             buf = new GapBuffer(Files.readString(path));
-        } else{
+        } else {
             buf = new GapBuffer("");
         }
         
         while (!stroke.getKeyType().equals(KeyType.Escape)) {
             stroke = screen.readInput();
-            if(stroke.getKeyType().equals(KeyType.Character)){
+            if (stroke.getKeyType().equals(KeyType.Character)) {
                 buf.insert(stroke.getCharacter());
-            } else if(stroke.getKeyType().equals(KeyType.ArrowRight)){
+            } else if (stroke.getKeyType().equals(KeyType.ArrowRight)) {
                 buf.moveRight();
-            } else if(stroke.getKeyType().equals(KeyType.ArrowLeft)){
+            } else if (stroke.getKeyType().equals(KeyType.ArrowLeft)) {
                 buf.moveLeft();
-            } else if(stroke.getKeyType().equals(KeyType.Backspace)){
+            } else if (stroke.getKeyType().equals(KeyType.Backspace)) {
                 buf.delete();
             }
             drawBuffer(buf, screen);
@@ -61,14 +61,26 @@ public class TextEditor {
         screen.stopScreen();
     }
     
+    
+/**
+* Updates the drawing of the Buffer on screen
+*
+* @param  buf  the GapBuffer object containing the buffer
+* @param  screen the object being used to print the buffer object.
+*/
     public static void drawBuffer (GapBuffer buf, Screen screen) throws IOException{
         int col = 0;
-        if(buf.gapBuffer.length > 0){
-            for(int i = 0; i < buf.gapBuffer.length; i++){
-                if(i % (col * 60 + 60) == 0 && i != 0){
+
+        char[] s = buf.toString().toCharArray();
+        if (s.length > 0) {
+            for (int i = 0; i < s.length; i++) {
+                if (i % (col * 60 + 60) == 0 && i != 0) {
                     col++;
                 }
-                screen.setCharacter(i - (col * 60), col, new TextCharacter(buf.gapBuffer[i]));  
+                screen.setCharacter(i - (col * 60), col, new TextCharacter(s[i]));  
+            }
+            for (int j = s.length; j < buf.gapBuffer.length; j++) {
+                screen.setCharacter(j - (col * 60), col, new TextCharacter(' '));  
             }
         }
         TerminalPosition pos = new TerminalPosition(buf.getCursorPosition() - (col * 60), col);

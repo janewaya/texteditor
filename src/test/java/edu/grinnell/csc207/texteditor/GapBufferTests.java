@@ -13,7 +13,7 @@ public class GapBufferTests {
       g.insert('a');
       g.insert('b');
       g.insert('c');
-      assertEquals("abc       ", g.toString());
+      assertEquals("abc", g.toString());
     }
     @Test
     public void deleteLetters() {
@@ -24,14 +24,19 @@ public class GapBufferTests {
       g.insert('l');
       g.insert('o');
       g.insert('!');
+      System.out.println(g.toString());
       g.moveLeft();
       g.moveLeft();
       g.moveLeft();
+      System.out.println(g.toString());
       g.delete();
+      System.out.println(g.toString());
       g.moveRight();
       g.moveRight();
+      System.out.println(g.toString());
       g.delete();
-      assertEquals("Hel      !", g.toString());
+      System.out.println(g.toString());
+      assertEquals("Hel!", g.toString());
     }
     
     @Test
@@ -55,7 +60,7 @@ public class GapBufferTests {
       g.moveRight();
       g.delete();
 
-      assertEquals("h   elalo!", g.toString());
+      assertEquals("helalo!", g.toString());
     }
     
     @Test
@@ -79,7 +84,7 @@ public class GapBufferTests {
       g.delete();
       g.insert('d');
 
-      assertEquals("abd       ", g.toString());
+      assertEquals("abd", g.toString());
     }
     
     @Test
@@ -140,7 +145,7 @@ public class GapBufferTests {
       g.insert('e');
       g.delete();
 
-      assertEquals("Well, I'm not a zombie but today I feel like one                               .", g.toString());
+      assertEquals("Well, I'm not a zombie but today I feel like one .", g.toString());
     }
     
     @Test
@@ -164,7 +169,7 @@ public class GapBufferTests {
       g.insert('e');
       g.insert(' ');
 
-      assertEquals("Weep, little      li", g.toString());
+      assertEquals("Weep, little li", g.toString());
     }
     
         @Property

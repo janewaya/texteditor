@@ -4,8 +4,9 @@
 
 ## Resources Used
 
-+ _(TODO: fill me in)_
-+ ...
++ TTAP: Data Structures - Lab Manual (https://osera.cs.grinnell.edu/ttap/data-structures-labs/classical-encryption.html)
++ NetBeans
++ Java 17
 + I started using song lyrics for my tests during the gapBuffer tests so
   test veryLong was pulled from "I'm not a Vampire" by Falling in Reverse and
   test longInMiddle had lyrics from "Little Lion Man" by Mumford & Sons
@@ -44,5 +45,26 @@ is a runtime of 4n, I took the average to get ~5n/2. This translates to
 a Big-O characterization of n.
 
 ## Changelog
+commit 5686de7b4b9679d6001bce6f3d721724d641f276 (HEAD -> main, origin/main, origin/HEAD)                              
+Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
+Date:   Sun Feb 23 22:16:06 2025 -0600                                                                                
+                                                                                                                      
+    Fully added file reading                                                                                          
+                                                                                                                      
+commit 6e65ec75a13191e3d8f70f208c21abfefe2a0545                                                                       
+Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
+Date:   Sun Feb 23 22:04:50 2025 -0600                                                                                
+                                                                                                                      
+    Added file reading and printing to the terminal   
 
-_(TODO: fill me in with a log of your committed changes)_
+commit 0b9c4ae8b83c9014b10ff4fdce61f4be5f9d0ffa                                                                       
+Author: Janeway <janewaya@berkeley.cs.grinnell.edu>                                                                   
+Date:   Thu Feb 20 17:57:51 2025 -0600                                                                                
+                                                                                                                      
+    Finished GapBuffer                                                                                                
+                                                                                                                      
+commit 7235f5820009531aa01351647d98850cecf6c652                                                                       
+Author: Janeway <janewaya@berkeley.cs.grinnell.edu>                                                                   
+Date:   Wed Feb 19 17:38:26 2025 -0600                                                                                
+                                                                                                                      
+    Part 1 done 
