@@ -10,16 +10,20 @@ public class GapBuffer {
     public int size;
     public char[] gapBuffer;
     public int pos;
+    public int startBuffer;
+    public int endBuffer;
     
     private static final int INITIAL_SIZE = 10;
     
-    public GapBuffer(){
+    public GapBuffer(String start){
         this.size = 0;
         this.pos = 0;
-        this.gapBuffer = new char[INITIAL_SIZE];
-        for(int i = 0; i < INITIAL_SIZE; i++){
+        this.startBuffer = start.length() + 1;
+        this.gapBuffer = new char[start.length() + INITIAL_SIZE];
+        for(int i = start.length(); i < start.length() + INITIAL_SIZE; i++){
             this.gapBuffer[i] = ' ';
         }
+        this.endBuffer = this.gapBuffer.length - 1;
     }
     
     private void ensureCapacity() {
@@ -35,6 +39,7 @@ public class GapBuffer {
                     result[this.size + 1 - (result.length - i)] = ' ';
                 }
             }
+            this.endBuffer = result.length - (this.size - this.pos) - 1;
             this.gapBuffer = result;
         }
     }
@@ -47,6 +52,7 @@ public class GapBuffer {
         else{
             this.gapBuffer[this.pos] = ch;
         }
+        this.startBuffer++;
         this.size++;
         this.pos++;
     }
@@ -56,6 +62,7 @@ public class GapBuffer {
             this.gapBuffer[this.pos - 1] = ' '; 
             this.pos--;
             this.size--;
+            this.startBuffer--;
         }
     }
 
@@ -63,8 +70,11 @@ public class GapBuffer {
         return this.pos;
     }
 
-    public void moveLeft() {
+    public void moveLeftOg() {
         if(this.pos > 0){
+            this.startBuffer--;
+            this.endBuffer--;
+
             int i = this.pos;
             if(this.size > this.pos){
                 while(this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1){
@@ -78,9 +88,23 @@ public class GapBuffer {
             this.pos--;
         }
     }
+    
+        public void moveLeft() {
+        if(this.pos > 0){
+            this.startBuffer--;
+            this.endBuffer--;
+            
+            this.gapBuffer[this.endBuffer + 1] = this.gapBuffer[this.startBuffer - 1];
+            this.gapBuffer[this.startBuffer - 1] = ' ';
+            this.pos--;
+        }
+    }
 
-    public void moveRight() {
+    public void moveRightOg() {
         if(this.pos < this.size){
+            this.startBuffer++;
+            this.endBuffer++;
+            
             int i = this.pos;
             this.pos++;
             while(this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1){
@@ -91,6 +115,17 @@ public class GapBuffer {
             this.gapBuffer[i] = ' ';
         }
     }
+    
+        public void moveRight() {
+        if(this.pos < this.size){
+            this.pos++;
+            this.endBuffer++;
+            this.gapBuffer[this.pos - 1] = this.gapBuffer[this.endBuffer];
+            this.gapBuffer[this.endBuffer] = ' ';
+            this.startBuffer++;
+        }
+    }
+   
 
     public int getSize() {
         return this.size;
