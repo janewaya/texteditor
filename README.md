@@ -45,6 +45,19 @@ is a runtime of 4n, I took the average to get ~5n/2. This translates to
 a Big-O characterization of n.
 
 ## Changelog
+
+commit ade29538f60b812b21f579931e55e94f50fd8d88 (HEAD -> main)                                                        
+Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
+Date:   Sun Feb 23 23:31:42 2025 -0600                                                                                
+                                                                                                                      
+    Added more style changes                                                                                          
+                                                                                                                      
+commit 03ae185933000011ccaf72b6a82b5d0aa5a351c9 (origin/main, origin/HEAD)                                            
+Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
+Date:   Sun Feb 23 23:25:22 2025 -0600                                                                                
+                                                                                                                      
+    removed unnecessary files                                                                                         
+                              
 commit e592144fbfbdf3addbe11240e89235829a7095c0 (HEAD -> main, origin/main, origin/HEAD)                              
 Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
 Date:   Sun Feb 23 23:22:05 2025 -0600                                                                                
