@@ -15,6 +15,10 @@ public class GapBuffer {
     
     private static final int INITIAL_SIZE = 10;
     
+   /**
+    * Creates a GapBuffer object.
+    * @param start Contains the original String to be edited.
+    */
     public GapBuffer(String start) {
         this.size = start.length();
         this.pos = start.length();
@@ -56,10 +60,9 @@ public class GapBuffer {
 */
     public void insert(char ch) {
         ensureCapacity();
-        if(this.pos == this.size){
+        if (this.pos == this.size) {
             this.gapBuffer[this.size] = ch;
-        }
-        else{
+        } else {
             this.gapBuffer[this.pos] = ch;
         }
         this.startBuffer++;
@@ -72,7 +75,7 @@ public class GapBuffer {
 *
 */
     public void delete() {
-        if(this.pos > 0){
+        if (this.pos > 0) {
             this.gapBuffer[this.pos - 1] = ' '; 
             this.pos--;
             this.size--;
@@ -93,23 +96,6 @@ public class GapBuffer {
 * Moves the cursor left.
 *
 */
-            public void moveLeftBad() {
-        if (this.pos > 0) {
-            int i = this.pos;
-            if (this.size > this.pos) {
-                while (this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1) {
-                    i++;
-                }
-                this.gapBuffer[i - 1] = this.gapBuffer[this.pos - 1];
-            } else {
-                this.gapBuffer[this.gapBuffer.length - 1] = this.gapBuffer[this.pos - 1];
-            }
-            this.gapBuffer[this.pos - 1] = ' ';
-            this.pos--;
-            this.startBuffer--;
-            this.endBuffer--;
-        }
-    }
         public void moveLeft() {
         if (this.pos > 0) {
             int i = this.pos;

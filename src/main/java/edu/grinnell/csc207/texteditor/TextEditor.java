@@ -68,7 +68,7 @@ public class TextEditor {
 * @param  buf  the GapBuffer object containing the buffer
 * @param  screen the object being used to print the buffer object.
 */
-    public static void drawBuffer (GapBuffer buf, Screen screen) throws IOException{
+    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         int col = 0;
 
         char[] s = buf.toString().toCharArray();

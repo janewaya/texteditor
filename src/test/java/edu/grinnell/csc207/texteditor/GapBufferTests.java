@@ -24,18 +24,13 @@ public class GapBufferTests {
       g.insert('l');
       g.insert('o');
       g.insert('!');
-      System.out.println(g.toString());
       g.moveLeft();
       g.moveLeft();
       g.moveLeft();
-      System.out.println(g.toString());
       g.delete();
-      System.out.println(g.toString());
       g.moveRight();
       g.moveRight();
-      System.out.println(g.toString());
       g.delete();
-      System.out.println(g.toString());
       assertEquals("Hel!", g.toString());
     }
     
