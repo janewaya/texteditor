@@ -31,7 +31,10 @@ public class GapBuffer {
         }
         this.endBuffer = this.gapBuffer.length - 1;
     }
-
+    /**
+     * Creates a GapBuffer object.
+     *
+     */
     public GapBuffer() {
         this.size = 0;
         this.pos = 0;
