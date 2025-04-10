@@ -2,6 +2,10 @@
 
 **Author**: Alex Janeway
 
+# REVISION NOTES:
+     - Made changes to "moveLeft" and "moveRight" such that the autograder tests
+       shall hopefully pass.
+
 ## Resources Used
 
 + TTAP: Data Structures - Lab Manual (https://osera.cs.grinnell.edu/ttap/data-structures-labs/classical-encryption.html)

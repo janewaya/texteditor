@@ -6,19 +6,20 @@ import java.util.Arrays;
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
-    
+
     public int size;
     public char[] gapBuffer;
     public int pos;
     public int startBuffer;
     public int endBuffer;
-    
+
     private static final int INITIAL_SIZE = 10;
-    
-   /**
-    * Creates a GapBuffer object.
-    * @param start Contains the original String to be edited.
-    */
+
+    /**
+     * Creates a GapBuffer object.
+     *
+     * @param start Contains the original String to be edited.
+     */
     public GapBuffer(String start) {
         this.size = start.length();
         this.pos = start.length();
@@ -30,11 +31,11 @@ public class GapBuffer {
         }
         this.endBuffer = this.gapBuffer.length - 1;
     }
-    
+
     /**
-* Makes sure the array is large enough to contain the new letters.
-*
-*/
+     * Makes sure the array is large enough to contain the new letters.
+     *
+     */
     private void ensureCapacity() {
         if (this.size == this.gapBuffer.length - 1) {
             char[] result = Arrays.copyOf(this.gapBuffer, this.gapBuffer.length * 2);
@@ -54,10 +55,10 @@ public class GapBuffer {
     }
 
     /**
-* Updates the drawing of the Buffer on screen
-*
-* @param  ch  the character being added to the buffer
-*/
+     * Updates the drawing of the Buffer on screen
+     *
+     * @param ch the character being added to the buffer
+     */
     public void insert(char ch) {
         ensureCapacity();
         if (this.pos == this.size) {
@@ -70,32 +71,32 @@ public class GapBuffer {
         this.pos++;
     }
 
-        /**
-* Deletes a character from the buffer.
-*
-*/
+    /**
+     * Deletes a character from the buffer.
+     *
+     */
     public void delete() {
         if (this.pos > 0) {
-            this.gapBuffer[this.pos - 1] = ' '; 
+            this.gapBuffer[this.pos - 1] = ' ';
             this.pos--;
             this.size--;
             this.startBuffer--;
         }
     }
 
-        /**
-* Returns the position of the Cursor
-*
-* @return  int  the position of the cursor.
-*/
+    /**
+     * Returns the position of the Cursor
+     *
+     * @return int the position of the cursor.
+     */
     public int getCursorPosition() {
         return this.pos;
     }
 
-/**
-* Moves the cursor left.
-*
-*/
+    /**
+     * Moves the cursor left.
+     *
+     */
     public void moveLeft() {
         if (this.pos > 0) {
             int i = this.pos;
@@ -111,30 +112,11 @@ public class GapBuffer {
             this.endBuffer--;
         }
     }
-        
-    public void moveLeftOld() {
-        if (this.pos > 0) {
-            int i = this.pos;
-            if (this.size > this.pos) {
-                while (this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1) {
-                    i++;
-                }
-                this.gapBuffer[i - 1] = this.gapBuffer[this.pos - 1];
-            } else {
-                this.gapBuffer[this.gapBuffer.length - 1] = this.gapBuffer[this.pos - 1];
-            }
-            this.gapBuffer[this.pos - 1] = ' ';
-            this.pos--;
-            this.startBuffer--;
-            this.endBuffer--;
-        }
-    }
 
-/**
-* Moves the cursor Right.
-*
-*/
-    
+    /**
+     * Moves the cursor Right.
+     *
+     */
     public void moveRight() {
         if (this.pos < this.size) {
             int i = this.endBuffer + 1;
@@ -146,52 +128,37 @@ public class GapBuffer {
         }
     }
 
-    public void moveRightOld() {
-        if (this.pos < this.size) {
-            int i = this.pos;
-            this.pos++;
-            while (this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1) {
-                i++;
-            }
-            this.gapBuffer[this.pos - 1] = this.gapBuffer[i];
-            this.gapBuffer[i] = ' ';
-            this.startBuffer++;
-            this.endBuffer++;
-        }
-    }
-    
-/**
-* Returns the size of the buffer.
-*
-* @return int returns the current size of the buffer
-*/
+    /**
+     * Returns the size of the buffer.
+     *
+     * @return int returns the current size of the buffer
+     */
     public int getSize() {
         return this.size;
     }
 
-/**
-* Returns an int at the current spot in the buffer.
-*
-* @param i the index that the character we wish to return is at.
-* @return char returns a character at a certain spot within the buffer.
-*/
+    /**
+     * Returns an int at the current spot in the buffer.
+     *
+     * @param i the index that the character we wish to return is at.
+     * @return char returns a character at a certain spot within the buffer.
+     */
     public char getChar(int i) {
         return this.gapBuffer[i];
     }
 
-
-/**
-* Returns the buffer as a string.
-*
-* @return String returns the buffer as a string.
-*/
+    /**
+     * Returns the buffer as a string.
+     *
+     * @return String returns the buffer as a string.
+     */
     public String toString() {
         char[] temp = Arrays.copyOf(this.gapBuffer, this.size);
-        System.out.println("String: " + Arrays.toString(temp) + 
-                          "\nSize: " + this.size + 
-                          "\nPos: " + this.pos + 
-                           "\nStart Buffer: " + this.startBuffer +
-                           "\nEnd Buffer: " + this.endBuffer);
+        System.out.println("String: " + Arrays.toString(temp)
+                + "\nSize: " + this.size
+                + "\nPos: " + this.pos
+                + "\nStart Buffer: " + this.startBuffer
+                + "\nEnd Buffer: " + this.endBuffer);
         int j = 0;
         for (int i = this.endBuffer + 1; i < this.gapBuffer.length; i++) {
             temp[this.startBuffer + j] = this.gapBuffer[i];
@@ -200,5 +167,5 @@ public class GapBuffer {
         String s = new String(temp);
         return s;
     }
-    
+
 }
