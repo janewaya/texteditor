@@ -18,58 +18,32 @@ public class TextEditor {
 
     /**
      * The main entry point for the TextEditor application.
+     *
      * @param args command-line arguments.
      */
-    
-    public static void main324(String[] args) throws IOException {
-        GapBuffer buf = new GapBuffer("");
-            buf.insert('g');
-            buf.insert('s');
-            buf.insert('a');
-            buf.insert('k');
-            buf.insert('n');
-            buf.insert('b');
-            buf.insert('k');
-            toStringBig(buf);
-            buf.moveLeft();
-            buf.moveLeft();
-            buf.moveLeft();
-            buf.moveLeft();
-            buf.moveLeft();
-            toStringBig(buf);
-    }
-    
-       public static void toStringBig(GapBuffer buf) {
-        System.out.println("String: " + buf.toString() + 
-                          "\nSize: " + buf.size + 
-                          "\nPos: " + buf.pos + 
-                           "\nStart Buffer: " + buf.startBuffer +
-                           "\nEnd Buffer: " + buf.endBuffer);
-        }
-        
     public static void main(String[] args) throws IOException {
-        
+
         if (args.length == 0) {
             throw new IndexOutOfBoundsException("Please try again with a file in mind.");
-            
+
         }
-        
+
         Screen screen = new DefaultTerminalFactory().createScreen();
-        
+
         screen.startScreen();
-        
+
         Path path = Paths.get(args[0]);
         System.out.format("Loading %s...\n", path);
-        
+
         KeyStroke stroke = screen.readInput();
         GapBuffer buf;
-        
+
         if (Files.isRegularFile(path) && Files.exists(path)) {
             buf = new GapBuffer(Files.readString(path));
         } else {
             buf = new GapBuffer("");
         }
-        
+
         while (!stroke.getKeyType().equals(KeyType.Escape)) {
             stroke = screen.readInput();
             if (stroke.getKeyType().equals(KeyType.Character)) {
@@ -87,14 +61,13 @@ public class TextEditor {
         Files.writeString(path, s);
         screen.stopScreen();
     }
-    
-    
-/**
-* Updates the drawing of the Buffer on screen
-*
-* @param  buf  the GapBuffer object containing the buffer
-* @param  screen the object being used to print the buffer object.
-*/
+
+    /**
+     * Updates the drawing of the Buffer on screen
+     *
+     * @param buf the GapBuffer object containing the buffer
+     * @param screen the object being used to print the buffer object.
+     */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         int col = 0;
 
@@ -104,15 +77,15 @@ public class TextEditor {
                 if (i % (col * 60 + 60) == 0 && i != 0) {
                     col++;
                 }
-                screen.setCharacter(i - (col * 60), col, new TextCharacter(s[i]));  
+                screen.setCharacter(i - (col * 60), col, new TextCharacter(s[i]));
             }
             for (int j = s.length; j < buf.gapBuffer.length; j++) {
-                screen.setCharacter(j - (col * 60), col, new TextCharacter(' '));  
+                screen.setCharacter(j - (col * 60), col, new TextCharacter(' '));
             }
         }
         TerminalPosition pos = new TerminalPosition(buf.getCursorPosition() - (col * 60), col);
         screen.setCursorPosition(pos);
         screen.refresh();
     }
-    
+
 }
