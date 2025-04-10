@@ -20,6 +20,33 @@ public class TextEditor {
      * The main entry point for the TextEditor application.
      * @param args command-line arguments.
      */
+    
+    public static void main324(String[] args) throws IOException {
+        GapBuffer buf = new GapBuffer("");
+            buf.insert('g');
+            buf.insert('s');
+            buf.insert('a');
+            buf.insert('k');
+            buf.insert('n');
+            buf.insert('b');
+            buf.insert('k');
+            toStringBig(buf);
+            buf.moveLeft();
+            buf.moveLeft();
+            buf.moveLeft();
+            buf.moveLeft();
+            buf.moveLeft();
+            toStringBig(buf);
+    }
+    
+       public static void toStringBig(GapBuffer buf) {
+        System.out.println("String: " + buf.toString() + 
+                          "\nSize: " + buf.size + 
+                          "\nPos: " + buf.pos + 
+                           "\nStart Buffer: " + buf.startBuffer +
+                           "\nEnd Buffer: " + buf.endBuffer);
+        }
+        
     public static void main(String[] args) throws IOException {
         
         if (args.length == 0) {

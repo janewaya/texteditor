@@ -100,6 +100,22 @@ public class GapBuffer {
         if (this.pos > 0) {
             int i = this.pos;
             if (this.size > this.pos) {
+                i = this.endBuffer;
+                this.gapBuffer[i] = this.gapBuffer[this.pos - 1];
+            } else {
+                this.gapBuffer[this.gapBuffer.length - 1] = this.gapBuffer[this.pos - 1];
+            }
+            this.gapBuffer[this.pos - 1] = ' ';
+            this.pos--;
+            this.startBuffer--;
+            this.endBuffer--;
+        }
+    }
+        
+    public void moveLeftOld() {
+        if (this.pos > 0) {
+            int i = this.pos;
+            if (this.size > this.pos) {
                 while (this.gapBuffer[i] == ' ' && i < this.gapBuffer.length - 1) {
                     i++;
                 }
@@ -118,8 +134,19 @@ public class GapBuffer {
 * Moves the cursor Right.
 *
 */
-
+    
     public void moveRight() {
+        if (this.pos < this.size) {
+            int i = this.endBuffer + 1;
+            this.gapBuffer[this.pos] = this.gapBuffer[i];
+            this.gapBuffer[i] = ' ';
+            this.pos++;
+            this.startBuffer++;
+            this.endBuffer++;
+        }
+    }
+
+    public void moveRightOld() {
         if (this.pos < this.size) {
             int i = this.pos;
             this.pos++;
@@ -152,6 +179,7 @@ public class GapBuffer {
         return this.gapBuffer[i];
     }
 
+
 /**
 * Returns the buffer as a string.
 *
@@ -159,6 +187,11 @@ public class GapBuffer {
 */
     public String toString() {
         char[] temp = Arrays.copyOf(this.gapBuffer, this.size);
+        System.out.println("String: " + Arrays.toString(temp) + 
+                          "\nSize: " + this.size + 
+                          "\nPos: " + this.pos + 
+                           "\nStart Buffer: " + this.startBuffer +
+                           "\nEnd Buffer: " + this.endBuffer);
         int j = 0;
         for (int i = this.endBuffer + 1; i < this.gapBuffer.length; i++) {
             temp[this.startBuffer + j] = this.gapBuffer[i];
@@ -167,4 +200,5 @@ public class GapBuffer {
         String s = new String(temp);
         return s;
     }
+    
 }
