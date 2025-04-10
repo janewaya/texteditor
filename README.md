@@ -5,6 +5,8 @@
 # REVISION NOTES:
      - Made changes to "moveLeft" and "moveRight" such that the autograder tests
        shall hopefully pass.
+     - Also added a new GapBuffer object so a String was no longer required as
+       an arguement
 
 ## Resources Used
 

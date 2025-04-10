@@ -32,6 +32,17 @@ public class GapBuffer {
         this.endBuffer = this.gapBuffer.length - 1;
     }
 
+    public GapBuffer() {
+        this.size = 0;
+        this.pos = 0;
+        this.startBuffer = 0;
+        this.gapBuffer = new char[INITIAL_SIZE];
+        for (int i = 0; i < INITIAL_SIZE; i++) {
+            this.gapBuffer[i] = ' ';
+        }
+        this.endBuffer = this.gapBuffer.length - 1;
+    }
+
     /**
      * Makes sure the array is large enough to contain the new letters.
      *
@@ -154,11 +165,6 @@ public class GapBuffer {
      */
     public String toString() {
         char[] temp = Arrays.copyOf(this.gapBuffer, this.size);
-        System.out.println("String: " + Arrays.toString(temp)
-                + "\nSize: " + this.size
-                + "\nPos: " + this.pos
-                + "\nStart Buffer: " + this.startBuffer
-                + "\nEnd Buffer: " + this.endBuffer);
         int j = 0;
         for (int i = this.endBuffer + 1; i < this.gapBuffer.length; i++) {
             temp[this.startBuffer + j] = this.gapBuffer[i];
