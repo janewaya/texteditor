@@ -43,9 +43,14 @@ public class TextEditor {
         }
         drawBuffer(buf, screen);
         KeyStroke stroke = screen.readInput();
+        int semantics = 0;
 
         while (!stroke.getKeyType().equals(KeyType.Escape)) {
-            stroke = screen.readInput();
+            if (semantics == 0) {
+                semantics++;
+            } else {
+                stroke = screen.readInput();
+            }
             if (stroke.getKeyType().equals(KeyType.Character)) {
                 buf.insert(stroke.getCharacter());
             } else if (stroke.getKeyType().equals(KeyType.ArrowRight)) {
