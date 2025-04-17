@@ -11,6 +11,7 @@
        text from the file could print without the user first pressing a button.
      - Made sure that when closing a file, the whole gapBuffer did not save,
        only the bits containing added text.
+     - Updated so the first character the user types is read as input.
 
 ## Resources Used
 
@@ -55,6 +56,13 @@ is a runtime of 4n, I took the average to get ~5n/2. This translates to
 a Big-O characterization of n.
 
 ## Changelog
+
+commit cb901c52cabfe8c5aa7277d7587f2bef633ad6b8 (HEAD -> main, origin/main, origin/HEAD)
+Author: Janeway <janewaya@mauchly.cs.grinnell.edu>
+Date:   Wed Apr 16 21:16:44 2025 -0500
+
+    Fixed another bug
+
 
 commit 05f45f918074d459a51580d3d9a044411fc2821e (HEAD -> main, origin/main, origin/HEAD)                                                        
 Author: Janeway <janewaya@mauchly.cs.grinnell.edu>                                                                                              
