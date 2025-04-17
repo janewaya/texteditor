@@ -33,9 +33,7 @@ public class TextEditor {
         screen.startScreen();
 
         Path path = Paths.get(args[0]);
-        System.out.format("Loading %s...\n", path);
 
-        KeyStroke stroke = screen.readInput();
         GapBuffer buf;
 
         if (Files.isRegularFile(path) && Files.exists(path)) {
@@ -43,6 +41,8 @@ public class TextEditor {
         } else {
             buf = new GapBuffer("");
         }
+        drawBuffer(buf, screen);
+        KeyStroke stroke = screen.readInput();
 
         while (!stroke.getKeyType().equals(KeyType.Escape)) {
             stroke = screen.readInput();
@@ -58,7 +58,10 @@ public class TextEditor {
             drawBuffer(buf, screen);
         }
         String s = new String(buf.gapBuffer);
-        Files.writeString(path, s);
+        String sub1 = s.substring(0, buf.startBuffer);
+        String sub2 = s.substring(buf.endBuffer + 1, buf.gapBuffer.length);
+        String sDone = sub1.concat(sub2);
+        Files.writeString(path, sDone);
         screen.stopScreen();
     }
 
