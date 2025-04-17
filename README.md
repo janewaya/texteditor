@@ -7,6 +7,10 @@
        shall hopefully pass.
      - Also added a new GapBuffer object so a String was no longer required as
        an arguement
+     - Moved the line creating a KeyStroke object down within my code so the
+       text from the file could print without the user first pressing a button.
+     - Made sure that when closing a file, the whole gapBuffer did not save,
+       only the bits containing added text.
 
 ## Resources Used
 
@@ -51,6 +55,12 @@ is a runtime of 4n, I took the average to get ~5n/2. This translates to
 a Big-O characterization of n.
 
 ## Changelog
+
+commit 05f45f918074d459a51580d3d9a044411fc2821e (HEAD -> main, origin/main, origin/HEAD)                                                        
+Author: Janeway <janewaya@mauchly.cs.grinnell.edu>                                                                                              
+Date:   Wed Apr 16 21:09:36 2025 -0500                                                                                                          
+                                                                                                                                                
+    Fixed the bug     
 
 commit ade29538f60b812b21f579931e55e94f50fd8d88 (HEAD -> main)                                                        
 Author: Janeway <janewaya@stibitz.cs.grinnell.edu>                                                                    
